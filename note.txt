@@ -1,0 +1,4 @@
+Cài các thư viện:
+	- SDL
+	- SDL_image
+	- SDL_ttf

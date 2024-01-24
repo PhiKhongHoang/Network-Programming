@@ -1,0 +1,25 @@
+all: server client
+
+server: server.o include.o chess.o communication.o
+	g++ -o server server.o include.o chess.o communication.o menu.o -lSDL2 -lSDL2_image -lSDL2_ttf
+
+client: client.o include.o chess.o communication.o
+	g++ -o client client.o include.o chess.o communication.o menu.o -lSDL2 -lSDL2_image -lSDL2_ttf
+
+server.o: server.cpp include.hpp
+	g++ -c server.cpp 
+
+client.o: client.cpp include.hpp
+	g++ -c client.cpp 
+
+include.o: include.cpp include.hpp chess.hpp communication.hpp menu.hpp
+	g++ -c include.cpp
+
+menu.o: menu.cpp menu.hpp 
+	g++ -c menu.cpp
+
+chess.o: chess.cpp chess.hpp
+	g++ -c chess.cpp
+
+communication.o: communication.cpp communication.hpp 
+	g++ -c communication.cpp
